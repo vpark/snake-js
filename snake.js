@@ -4,8 +4,8 @@ var Coord = function(x,y){
 };
 
 Coord.prototype.plus = function(coord_obj){
-  newX = this.x + coord_obj.x
-  newY = this.y + coord_obj.y
+  newX = this.x + coord_obj.x;
+  newY = this.y + coord_obj.y;
 
   return new Coord(newX, newY);
 }
@@ -39,11 +39,11 @@ Snake.prototype.grow = function () {
 Snake.prototype.inBounds = function(){
   return this.segments.every(function(segment, index1) {
     if (segment.x > 15 || segment.x <= 0 || segment.y > 15 || segment.y <= 0) {
-      console.log("NO BOUNDARIES")
+      console.log("out of bounds")
       return false
     }
     else {
-      console.log("WHY JAVASCRIPT")
+      console.log("in bounds")
       return true;
     }
   })

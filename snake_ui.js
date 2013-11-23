@@ -40,8 +40,8 @@ $(function(){
       var str = this.board.render()
       this.$el.html("<div>" + str + "</div>")
     } else {
-      alert("You've died!");
-      location.reload();
+      console.log("You've died!");
+      // location.reload();
     }
 
   }
