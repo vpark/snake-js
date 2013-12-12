@@ -95,14 +95,12 @@ var Board = function() {
 
 
 Board.prototype.makeGrid = function () {
-  this.grid = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
-  for (var i=0; i != 15; i++) {
-    for (var j=0; j != 15; j++) {
-      this.grid[i][j] = " "
-    }
-  }
-  return this.grid
-}
+  return _.times(15, function () {
+    return _.times(15, function () {
+      return $('<div class="cell"></div>')
+    });
+  });
+};
 
 Board.prototype.addApple = function (){
   var that = this;
@@ -143,15 +141,8 @@ Board.prototype.updateGrid = function () {
 
 Board.prototype.render = function () {
   this.grid = this.updateGrid();
-  var prettyprint = []
+  return _(this.grid).map(function (row) { return row.join(""); }).join("\n");
 
-  this.grid.forEach (function (row) {
-    row.forEach (function (tile) {
-      prettyprint.push(tile)
-    })
-    prettyprint.push("<br>");
-  })
-  return prettyprint;
 }
 
 // b = new Board()

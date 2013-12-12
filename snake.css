@@ -1,0 +1,17 @@
+.snake {
+  background: green !important;
+}
+
+.apple {
+  background: red !important;
+}
+
+
+.cell {
+  float: left;
+  height: 20px;
+  width: 20px;
+  background: #eee;
+
+  border: solid gray 1px;
+}

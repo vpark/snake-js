@@ -12,6 +12,8 @@ $(function(){
     })
     setInterval(function(){
       that.step();
+      that.render();
+      console.log('rerendered');
     },500)
   }
 
@@ -32,13 +34,40 @@ $(function(){
       break;
     }
   }
-
+  
+  View.prototype.render = function() {
+    var view = this;
+    var board = view.board;
+    
+    function buildBoardDivs() {
+      return _.times(15, function () {
+        return _.times(15, function () {
+          return $('<div class="cell"></div>');
+        });
+      });
+    }
+    
+    var cellsMatrix = buildBoardDivs();
+    _(board.snake.segments).each(function (seg) {
+      cellsMatrix[seg.x][seg.y].addClass("snake");
+    });
+    
+    var apple = board.apple;
+    cellsMatrix[apple.x][apple.y].addClass("apple");
+    
+    this.$el.empty();
+    _(cellsMatrix).each(function (row) {
+      var $rowEl = $('<div class="row"></div></br>');
+      _(row).each(function ($cell) { $rowEl.append($cell) });
+      view.$el.append($rowEl);
+    });
+  }
+  
   View.prototype.step = function(){
     // console.log(this.board.snake.isAlive())
     if(this.board.snake.inBounds() && !this.board.snake.eatingSelf()) {
       this.board.snake.move();
-      var str = this.board.render()
-      this.$el.html("<div>" + str + "</div>")
+      this.render();
     } else {
       console.log("You've died!");
       // location.reload();
