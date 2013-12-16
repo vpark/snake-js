@@ -1,11 +1,12 @@
 .snake {
   background: green !important;
+  z-index: 3;
 }
 
 .apple {
   background: red !important;
+  z-index: 2;
 }
-
 
 .cell {
   float: left;

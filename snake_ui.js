@@ -13,8 +13,8 @@ $(function(){
     setInterval(function(){
       that.step();
       that.render();
-      console.log('rerendered');
-    },500)
+      // ('rerendered');
+    },250)
   }
 
   View.prototype.handleKeyEvents = function(e){
@@ -50,6 +50,7 @@ $(function(){
     var cellsMatrix = buildBoardDivs();
     _(board.snake.segments).each(function (seg) {
       cellsMatrix[seg.x][seg.y].addClass("snake");
+      (board.snake.segments);
     });
     
     var apple = board.apple;
@@ -64,10 +65,11 @@ $(function(){
   }
   
   View.prototype.step = function(){
-    // console.log(this.board.snake.isAlive())
+    // (this.board.snake.isAlive())
     if(this.board.snake.inBounds() && !this.board.snake.eatingSelf()) {
+      this.board.checkApple();
       this.board.snake.move();
-      this.render();
+      // this.render();
     } else {
       console.log("You've died!");
       // location.reload();
