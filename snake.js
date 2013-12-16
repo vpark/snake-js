@@ -54,6 +54,7 @@ Snake.prototype.eatingSelf = function(){
   return this.segments.some(function(segment,index1) {
     return that.segments.some(function(segment2, index2){
       if ((index1 !== index2) && (segment.x === segment2.x && segment.y === segment2.y)) {
+        // console.log("eating self");
         return true;
       }
       else {
@@ -103,6 +104,7 @@ Board.prototype.makeGrid = function () {
 Board.prototype.addApple = function (){
   var that = this;
   coord = new Coord((Math.floor(Math.random()*15)), (Math.floor(Math.random()*15)))
+  // console.log(coord)
   if (this.snake.segments.some (function (segment) {
     return (segment.x == coord.x && segment.y == coord.y)
   })) {
@@ -116,8 +118,8 @@ Board.prototype.checkApple = function () {
   var that = this;
   this.snake.segments.forEach (function (segment) {
     if (segment.x == that.apple.x && segment.y == that.apple.y) {
-      that.addApple();
-      that.snake.grow();
+      that.addApple()
+      that.snake.grow()
     }
   })
 }
@@ -128,6 +130,7 @@ Board.prototype.updateGrid = function () {
   grid[this.apple.x][this.apple.y] = "a"
   this.checkApple();
   this.snake.segments.forEach (function (segment) {
+    // console.log(segment)
     grid[segment.x][segment.y] = "s"
   })
 
@@ -141,4 +144,8 @@ Board.prototype.render = function () {
 
 }
 
+// b = new Board()
+// //console.log(b.render())
+// b.snake.move();
+// console.log(b.render())
 
