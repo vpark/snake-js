@@ -13,7 +13,6 @@ Coord.prototype.plus = function(coord_obj){
 var Snake = function(){
   this.dir = 'W';
   this.segments = [new Coord(8,8)];
-
 };
 
 Snake.prototype.move = function(){
@@ -143,9 +142,3 @@ Board.prototype.render = function () {
   return _(this.grid).map(function (row) { return row.join(""); }).join("\n");
 
 }
-
-// b = new Board()
-// //console.log(b.render())
-// b.snake.move();
-// console.log(b.render())
-

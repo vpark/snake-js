@@ -2,19 +2,38 @@ $(function(){
 
   var View = function(element){
     this.$el = $(element);
+    
   };
+  
+  View.prototype.preStart = function(){
+    var that = this;
+    $('.overlay').show();
+    $('body').on('click', function(){
+      $('.overlay').hide();
+      that.start();
+      $(this).off();
+    });
+  }
 
   View.prototype.start = function(){
     var that = this;
+    
     this.board = new Board();
     $("*").keypress(function(e){
       that.handleKeyEvents(e);
     })
-    setInterval(function(){
+    
+    var gameInterval = setInterval(function(){
       that.step();
-      // ('rerendered');
-    },150)
+
+      if(!that.board.snake.inBounds() || that.board.snake.eatingSelf()) {
+        
+        clearInterval(gameInterval);
+        that.preStart();
+      }
+    }, 150)
   }
+
 
   View.prototype.handleKeyEvents = function(e){
     switch(e.keyCode)
@@ -47,10 +66,15 @@ $(function(){
     }
     
     var cellsMatrix = buildBoardDivs();
+    
     _(board.snake.segments).each(function (seg) {
-      cellsMatrix[seg.x][seg.y].attr('id','snake');
-      (board.snake.segments);
+      cellsMatrix[seg.x][seg.y].addClass("snake");
     });
+    
+    var tail = _(board.snake.segments).last();
+    if (board.snake.segments.length > 1) {
+      cellsMatrix[tail.x][tail.y].attr('id','tail');
+    }
     
     var apple = board.apple;
     cellsMatrix[apple.x][apple.y].addClass("apple");
@@ -65,19 +89,20 @@ $(function(){
   
   View.prototype.step = function(){
     // (this.board.snake.isAlive())
-    if(this.board.snake.inBounds() && !this.board.snake.eatingSelf()) {
-      this.board.checkApple();
-      this.board.snake.move();
-      this.render();
-    } else {
-      alert("You've died!");
-      location.reload();
-    }
-
-  }
-
+    this.board.checkApple();
+    this.board.snake.move();
+    this.render();
+  };
 
   view = new View(".board");
-  view.start();
+  view.preStart();
 
 });
+
+// $(window).resize(onResize);
+// $(document).ready(onResize);
+// 
+// function onResize() {
+//     $('.cell').height($('.cell').width());
+// }
+

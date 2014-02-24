@@ -1,15 +1,43 @@
 <html>
 <head>
-    <script src="underscore.js"></script>
-    <script src="snake.js"></script>
-    <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
-    <script src="snake_ui.js"></script>
-    <link rel="stylesheet" href="./snake.css"></link>
+  <script src="underscore.js"></script>
+  <script src="snake.js"></script>
+  <script src="jquery-1.9.1.js"></script>
+  <script src="snake_ui.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Ruda:900' rel='stylesheet' type='text/css'>
+  
+  <link rel="stylesheet" href="./snake.css"></link>
+  <title>Snake</title>
 </head>
 
 <body>
-    <!-- <h1>Snake</h1> -->
-    <div class="board">  </div>
+  <h2 class="overlay">Click anywhere to (re)start!</h2>       
+  
+  <span class="game">
+        <h1>Snake &nbsp</h1>
+      <div class="title cell snake"></div>
+      <div class="title cell snake"></div>
+      <div class="title cell snake" id="tail"></div>
+      <div class="board"></div>
+
+  </span>
+
+  <span class="directions">
+    <h3>How to Play:</h3>
+    <p>
+      Up: W
+      <br>
+      <br>
+      Left: A
+      <br>
+      <br>
+      Down: S
+      <br>
+      <br>
+      Right: D
+    </p>
+  </span>
+  
 </body>
 
 </html>

@@ -1,37 +1,89 @@
-#snake {
-  background: green !important;
-  opacity: .7 !important;
+body {
+  width: 100%;
+  margin: 30px 0 0 0;
 }
 
-.apple {
-  background: red !important;
-  opacity: .7 !important;
+span {
+  text-align: center;
+  vertical-align: text-top;
+  display: inline-block;
+  width: 49%;
 }
 
-.cell {
-  margin: 3px;
-  float: left;
-  height: 30px;
-  width: 30px;
-  background: #eee;
-  opacity: .6;
-  border-radius: 4px;
-/*  border: solid gray 1px;*/
+.row, .cell {
+  display: inline-block;
 }
 
 .board {
-  padding-top: 25px;
-  width: 350px;
-  margin-left: auto;
-  margin-right: auto;
+  display: block;
+  position: relative;
+  margin-top: 20px;
 }
 
-/*h1 {
-  margin: auto;
-  width: 105px;
-}*/
+h1 {
+  font-family: 'Ruda', sans-serif;
+  font-size: 72px;
+  display: inline;
+  margin-left: -140px;
+}
+
+h3 {
+  font-size: 50px;
+/*  margin-top: 130px;*/
+}
+
+p {
+  font-size: 35px;
+  padding-top: 30px;
+}
+
+.overlay {
+    font-family: 'Ruda', sans-serif;
+  background: lightgray;
+    display: block;
+    top: 400px;
+
+  position: absolute;
+
+  text-align: center;
+  width: 100%;
+  padding: 44px 0;
+  z-index: 1;
+}
+
+.directions {
+  font-family: 'Ruda', sans-serif;
+  position: absolute;
+  text-align: left;
+}
 
 .row {
-  margin: 5px;
-  width: 550px;
+  width: 100%;
+  text-align: center;
+}
+
+.cell {
+  height: 30px;
+  width: 30px;
+  background: #eee;
+  opacity: .7;
+  border-radius: 100px;
+  margin: 2px;
+
+}
+
+.apple {
+  background: #ff0000;
+}
+
+.snake {
+  background: #00ff00;
+}
+
+#tail {
+  background: #7fff7f;
+}
+
+.title {
+  display: inline-block;
 }
