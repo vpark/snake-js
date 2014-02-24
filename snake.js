@@ -37,7 +37,7 @@ Snake.prototype.grow = function () {
 
 Snake.prototype.inBounds = function(){
   return this.segments.every(function(segment, index1) {
-    if (segment.x > 15 || segment.x <= 0 || segment.y > 15 || segment.y <= 0) {
+    if (segment.x >= 15 || segment.x < 0 || segment.y >= 15 || segment.y < 0) {
       // console.log("out of bounds")
       return false
     }

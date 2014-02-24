@@ -66,7 +66,6 @@ $(function(){
     }
     
     var cellsMatrix = buildBoardDivs();
-    
     _(board.snake.segments).each(function (seg) {
       cellsMatrix[seg.x][seg.y].addClass("snake");
     });
