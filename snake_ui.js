@@ -24,13 +24,14 @@ $(function(){
     })
     
     var gameInterval = setInterval(function(){
-      that.step();
-
       if(!that.board.snake.inBounds() || that.board.snake.eatingSelf()) {
         
         clearInterval(gameInterval);
         that.preStart();
       }
+      that.step();
+
+
     }, 150)
   }
 
